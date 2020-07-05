@@ -27,7 +27,8 @@ namespace firstapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<mi_app_xamarinContext>();
+            services.AddDbContext<mi_app_xamarinContext>(c=>c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<mi_app_xamarinContext>();
             services.AddControllers();
         }
 
